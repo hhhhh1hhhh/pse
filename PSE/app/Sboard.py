@@ -28,7 +28,7 @@ templates = Jinja2Templates(directory=BASE_DIR / "templates")
 # db = client["PSE"]  # db접근#
 # collection = db["CommunityBoard"]  # collection 접근#
 
-mongodb_URL = "mongodb+srv://Jumin:wnwkao1356!@cluster0.hew1uqx.mongodb.net/test"
+mongodb_URL = "mongodb+srv://"
 client = MongoClient(mongodb_URL)
 db = client.PSE
 collection = db.CommunityBoard
