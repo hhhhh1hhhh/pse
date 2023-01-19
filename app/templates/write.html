@@ -1,0 +1,29 @@
+<!-- 글 작성 -->
+
+<html>
+    <body>
+        <table>
+            <form name ="form" method="POST" action="/write">
+                <tr>
+                <!--작성자 칸-->
+                    <td>작성자</td>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                <!-- 제목 칸-->
+                    <td>제목</td>
+                    <td><input type="text" name="title"></td>
+                </tr>
+                <tr>
+                <!-- 내용 입력칸. textarea : 여러 줄의 문자열을 입력할 수 있는 양식-->
+                    <td>내용</td>
+                    <td><textarea type="input" name="contents"></textarea></td>
+                </tr>
+                <tr>
+                <!-- 제출 버튼 -->
+                    <td colspan="2"><input type = "submit"></td>
+                </tr>
+            </form>
+        </table>
+    </body>
+</html>
