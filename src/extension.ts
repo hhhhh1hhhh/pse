@@ -121,6 +121,13 @@ let debugcount : number = 0;
 		debugcount += 1;
 		vscode.window.showInformationMessage('Debug Start (WorkspaceFolder) : ' + e.workspaceFolder?.name + debugcount );
 	})); 
+
+	// 실행 이벤트
+let runcount : number = 0;
+	context.subscriptions.push(vscode.tasks.onDidStartTask(e => {
+		runcount += 1;
+		vscode.window.showInformationMessage('StartTask (name) : ' + e.execution.task.name + runcount);
+	})); 
 	
 	// 텍스트 에디터 선택 이벤트 (작성할 때 마다 업데이트) (최종 얼마나 작성했는지 알 수 있음)
 	context.subscriptions.push(vscode.window.onDidChangeTextEditorSelection (e => {
@@ -133,9 +140,9 @@ let debugcount : number = 0;
 	}));
 
 	//커맨드 등록
-	context.subscriptions.push(vscode.commands.registerCommand('hello_world', _ => {
-		vscode.window.showInformationMessage('hahaha'); 
-		}));
+	//context.subscriptions.push(vscode.commands.registerCommand('hello_world', _ => {
+	//	vscode.window.showInformationMessage('hahaha'); 
+	//	}));
 
 	// 저장 시 횟수가 늘어남
 let savecount : number = 0;
@@ -143,9 +150,6 @@ let savecount : number = 0;
 		savecount += 1;
 		vscode.window.showInformationMessage('sava file : ' + e.fileName + savecount);
 	}));
-
-
-
 
 	context.subscriptions.push(disposable);
 }
