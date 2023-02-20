@@ -115,5 +115,40 @@ export function activate({ subscriptions }: vscode.ExtensionContext) {
 	}
 }
 
+	// 디버깅 시작 이벤트 (횟수)
+let debugcount : number = 0;
+	context.subscriptions.push(vscode.debug.onDidStartDebugSession(e => {
+		debugcount += 1;
+		vscode.window.showInformationMessage('Debug Start (WorkspaceFolder) : ' + e.workspaceFolder?.name + debugcount );
+	})); 
+	
+	// 텍스트 에디터 선택 이벤트 (작성할 때 마다 업데이트) (최종 얼마나 작성했는지 알 수 있음)
+	context.subscriptions.push(vscode.window.onDidChangeTextEditorSelection (e => {
+		vscode.window.showInformationMessage('Change Text : ' + e.textEditor.document.getText());
+	}));
+
+	// 텍스트 에디터 변경 이벤트 (텍스트 변경 시 입력한 값을 가져옴 (하나씩))
+	context.subscriptions.push(vscode.workspace.onDidChangeTextDocument (e => {
+		vscode.window.showInformationMessage('Change Text(filename) : ' + e.contentChanges[0].text);
+	}));
+
+	//커맨드 등록
+	context.subscriptions.push(vscode.commands.registerCommand('hello_world', _ => {
+		vscode.window.showInformationMessage('hahaha'); 
+		}));
+
+	// 저장 시 횟수가 늘어남
+let savecount : number = 0;
+	context.subscriptions.push(vscode.workspace.onDidSaveTextDocument (e => {
+		savecount += 1;
+		vscode.window.showInformationMessage('sava file : ' + e.fileName + savecount);
+	}));
+
+
+
+
+	context.subscriptions.push(disposable);
+}
+
 // this method is called when your extension is deactivated
 export function deactivate() {}
