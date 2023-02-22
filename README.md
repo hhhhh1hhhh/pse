@@ -1,7 +1,9 @@
 # PSE README
 
 This is the README for your extension "PSE". After writing up a brief description, we recommend including the following sections.
+
 한밭대학교 주기주도적 프로그래밍 학습 보조 서비스 vscode Extension for PSE입니다. 
+
 This is vscode Extension for PSE, a self-directed programming learning assistance service at Hanbat University.
 
 ## Features
